@@ -1,0 +1,20 @@
+verion: 0.2
+
+phases:
+    install:
+     runtimr-versions:
+       nodejs: 16
+     commands:
+        -npm install
+       
+    build:
+     commands:
+        -npm run-script build
+artifacts:
+    files:
+        - public/**/*
+        - src/**/*
+        - package.json
+        - server.js
+        - appspec.yml
+        - scripts/**/*

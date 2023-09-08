@@ -1,0 +1,21 @@
+version: 0.0
+os: linux
+files:
+  - source: / 
+    destination: /var/www/html/
+hooks:
+  BeforeInstall:
+    - location: aws-scripts/install_dependencies
+      timeout: 300
+      #      runas: root
+  AfterInstall:
+    - location: aws-scripts/composer_install
+      timeout: 300
+      #     runas: root
+    - location: aws-scripts/unittests
+      timeout: 3600
+      #      runas: root
+  Applicationstart:
+    - location: aws-scripts/app_start.sh
+      timeout: 300
+      #      runas : root
